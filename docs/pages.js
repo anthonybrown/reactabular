@@ -1,11 +1,11 @@
 /* eslint-disable global-require, import/no-unresolved */
-import tablePages from './table';
-import columnDefinitionPages from './column-definition';
-import dataPages from './data';
-import featuresPages from './features';
-import examplesPages from './examples';
-import searchPages from './search';
-import contributingPages from './contributing';
+import tablePages from './table'
+import columnDefinitionPages from './column-definition'
+import dataPages from './data'
+import featuresPages from './features'
+import examplesPages from './examples'
+import searchPages from './search'
+import contributingPages from './contributing'
 
 export default [
   {
@@ -45,4 +45,4 @@ export default [
     title: 'License',
     component: require('../LICENSE.md')
   }
-];
+]

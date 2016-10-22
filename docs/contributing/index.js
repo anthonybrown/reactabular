@@ -13,4 +13,4 @@ export default rootPath => ({
       component: require('../../CONTRIBUTORS.md')
     }
   ]
-});
+})

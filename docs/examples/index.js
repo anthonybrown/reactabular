@@ -48,4 +48,4 @@ export default rootPath => ({
       component: require('./multiple-async-instances.md')
     }
   ]
-});
+})

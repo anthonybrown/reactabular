@@ -1,19 +1,19 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from 'fs'
+import * as path from 'path'
 
-import fromPairs from 'lodash/fromPairs';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import merge from 'webpack-merge';
+import fromPairs from 'lodash/fromPairs'
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import merge from 'webpack-merge'
 
-const catalogPkg = require('./node_modules/catalog/package.json');
-const pkg = require('./packages/reactabular/package.json');
+const catalogPkg = require('./node_modules/catalog/package.json')
+const pkg = require('./packages/reactabular/package.json')
 
-const TARGET = process.env.npm_lifecycle_event || '';
-const ROOT_PATH = path.resolve(__dirname);
+const TARGET = process.env.npm_lifecycle_event || ''
+const ROOT_PATH = path.resolve(__dirname)
 const config = {
   paths: {
     indexTemplate: path.join(ROOT_PATH, 'templates', 'index.ejs'),
@@ -24,13 +24,13 @@ const config = {
     documentation: path.join(ROOT_PATH, 'docs'),
     'js-yaml': path.join(ROOT_PATH, 'node_modules', 'js-yaml')
   }
-};
+}
 const packages = fromPairs(fs.readdirSync('packages').map(p => [
   p, path.join(config.paths.src, p, 'src')
-]));
+]))
 
 if (!process.env.BABEL_ENV) {
-  process.env.BABEL_ENV = TARGET;
+  process.env.BABEL_ENV = TARGET
 }
 
 const common = {
@@ -75,7 +75,7 @@ const common = {
       }
     ]
   }
-};
+}
 
 const commonSite = {
   plugins: [
@@ -90,7 +90,7 @@ const commonSite = {
       VERSION: JSON.stringify(pkg.version)
     })
   ]
-};
+}
 
 if (TARGET === 'start') {
   module.exports = merge(common, commonSite, {
@@ -119,7 +119,7 @@ if (TARGET === 'start') {
         }
       ]
     }
-  });
+  })
 }
 
 if (TARGET.startsWith('gh-pages')) {
@@ -177,7 +177,7 @@ if (TARGET.startsWith('gh-pages')) {
         }
       ]
     }
-  });
+  })
 }
 
 const commonDist = merge(common, {
@@ -203,14 +203,14 @@ const commonDist = merge(common, {
       root: 'React'
     }
   }
-});
+})
 
 if (TARGET === 'dist:build') {
   module.exports = merge(commonDist, {
     output: {
       filename: 'reactabular.js'
     }
-  });
+  })
 }
 
 if (TARGET === 'dist:build-min') {
@@ -225,9 +225,9 @@ if (TARGET === 'dist:build-min') {
         }
       })
     ]
-  });
+  })
 }
 
 if (!TARGET) {
-  module.exports = common;
+  module.exports = common
 }

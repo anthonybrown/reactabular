@@ -6,4 +6,4 @@ export default {
   it: 'Italy',
   pl: 'Poland',
   se: 'Sweden'
-};
+}

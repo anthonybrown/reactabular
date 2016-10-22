@@ -11,7 +11,7 @@ const rows = [
     dad: 'George',
     lovesBeeGees: false
   }
-];
+]
 
 const columns = [
   {
@@ -26,9 +26,9 @@ const columns = [
       label: 'Dad'
     }
   }
-];
+]
 
 export {
   rows,
   columns
-};
+}
